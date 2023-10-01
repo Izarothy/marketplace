@@ -14,7 +14,9 @@ const Item = ({ name, categories }: TProps) => {
   useEffect(() => {
     if (selectedCategory) {
       setCategoriesMatching(categories.includes(selectedCategory));
+      return;
     }
+    setCategoriesMatching(true);
   }, [selectedCategory, categories]);
   return (
     <div

@@ -6,7 +6,7 @@ const NavBar = () => {
   return (
     <nav className="flex w-full items-center justify-between px-4">
       <Link href="/">
-        <span className="text-lg font-bold">Marketplace</span>
+        <span className="text-lg font-bold text-white">Marketplace</span>
       </Link>
       <AuthButton />
     </nav>

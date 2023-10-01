@@ -4,7 +4,7 @@ import landing from "../../public/landing.jpg";
 
 const Header = () => {
   return (
-    <header className="relative h-[80vh] w-screen">
+    <header className="relative h-[70vh] w-screen md:h-[80vh]">
       <Image
         src={landing}
         alt="Landscape"

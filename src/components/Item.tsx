@@ -3,7 +3,7 @@ import React from "react";
 
 const Item = () => {
   return (
-    <div className="flex max-w-[250px] flex-col items-center gap-2 p-2 text-white">
+    <div className="flex max-w-[250px] flex-col items-center gap-2 p-2 text-white hover:bg-white hover:text-black">
       <div className="relative aspect-square w-full">
         <Image
           src={"https://picsum.photos/250/250"}
@@ -26,7 +26,7 @@ const Item = () => {
       </div>
       <div className="flex w-full items-center justify-between ">
         <h5>$500</h5>
-        <button className="rounded-md border border-white px-2 py-1 hover:bg-white hover:text-black">
+        <button className="rounded-md border border-black px-2 py-1 hover:bg-black hover:text-white">
           Buy now
         </button>
       </div>

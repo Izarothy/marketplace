@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Header from "~/components/Header";
 import NavBar from "~/components/NavBar";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       </Head>
       <>
         <NavBar />
+        <Header />
         <main className=" flex min-h-screen flex-col items-center justify-center"></main>
       </>
     </>

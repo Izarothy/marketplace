@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
+
 const inter = Inter({ subsets: ["latin"] });
 
 const MyApp: AppType<{ session: Session | null }> = ({
@@ -13,9 +14,9 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <main className={inter.className}>
-        <Component {...pageProps} />
-      </main>
+        <main className={inter.className}>
+          <Component {...pageProps} />
+        </main>
     </SessionProvider>
   );
 };

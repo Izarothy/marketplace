@@ -1,10 +1,27 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useCategoryStore } from "~/utils/store";
 
-const Item = () => {
+type TProps = {
+  name: string;
+  categories: string[];
+};
+const Item = ({ name, categories }: TProps) => {
+  const selectedCategory = useCategoryStore((state) => state.selectedCategory);
   const [isHovered, setIsHovered] = useState(false);
+  const [categoriesMatching, setCategoriesMatching] = useState(true);
+
+  useEffect(() => {
+    if (selectedCategory) {
+      setCategoriesMatching(categories.includes(selectedCategory));
+    }
+  }, [selectedCategory, categories]);
   return (
-    <div className="flex max-w-[250px] flex-col items-center gap-2 p-2 text-white hover:bg-white hover:text-black">
+    <div
+      className={`flex max-w-[250px] flex-col items-center gap-2 p-2 text-white hover:bg-white hover:text-black ${
+        categoriesMatching ? `` : `hidden`
+      }`}
+    >
       <div className="relative flex aspect-square w-full justify-center">
         <Image
           src={"https://picsum.photos/250/250"}
@@ -20,7 +37,7 @@ const Item = () => {
             isHovered ? `` : `hidden`
           }`}
         >
-          Test
+          {name}
         </div>
       </div>
       <div className="mr-auto flex items-center gap-2">

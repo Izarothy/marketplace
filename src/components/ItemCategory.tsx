@@ -5,12 +5,10 @@ type TProps = {
   name: string;
 };
 const ItemCategory = ({ name }: TProps) => {
-  const selectedCategories = useCategoryStore(
-    (state) => state.selectedCategories,
-  );
-  const isClicked = selectedCategories?.includes(name);
+  const selectedCategory = useCategoryStore((state) => state.selectedCategory);
+  const isClicked = selectedCategory === name;
   const setSelectedCategories = useCategoryStore(
-    (state) => state.setSelectedCategories,
+    (state) => state.setSelectedCategory,
   );
 
   return (

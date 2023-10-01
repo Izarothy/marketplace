@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Header from "~/components/Header";
+import ItemGrid from "~/components/ItemGrid";
 import NavBar from "~/components/NavBar";
 
 export default function Home() {
@@ -13,7 +14,11 @@ export default function Home() {
       <>
         <NavBar />
         <Header />
-        <main className=" flex min-h-screen flex-col items-center justify-center"></main>
+        <main className="flex min-h-screen flex-col items-center ">
+          <section className="w-full">
+            <ItemGrid />
+          </section>
+        </main>
       </>
     </>
   );

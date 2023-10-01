@@ -3,7 +3,7 @@ import ItemCategory from "./ItemCategory";
 
 const ItemCategories = () => {
   return (
-    <div className="flex flex-wrap justify-center gap-3">
+    <div className="mb-4 flex flex-wrap justify-center gap-3">
       <ItemCategory name="Test 1" />
       <ItemCategory name="Test 2" />
       <ItemCategory name="Test 3" />

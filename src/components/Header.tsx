@@ -11,7 +11,7 @@ const Header = () => {
         fill
         quality={100}
         sizes={"100vw"}
-        objectFit="cover"
+        className="object-cover"
       />
       <span className="absolute bottom-0 mb-8 flex w-full justify-center gap-8">
         <button className="text-gray-00 rounded-sm bg-white px-6 py-1 font-semibold">

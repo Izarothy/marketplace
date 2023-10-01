@@ -1,18 +1,27 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 const Item = () => {
+  const [isHovered, setIsHovered] = useState(false);
   return (
     <div className="flex max-w-[250px] flex-col items-center gap-2 p-2 text-white hover:bg-white hover:text-black">
-      <div className="relative aspect-square w-full">
+      <div className="relative flex aspect-square w-full justify-center">
         <Image
           src={"https://picsum.photos/250/250"}
           alt="Listed item"
           fill
           sizes="100vw"
           className="h-auto w-full rounded-md object-cover"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         />
-        <span className="absolute bottom-4 z-10 w-full text-center">Test</span>
+        <div
+          className={`bg-black/15 absolute bottom-4 rounded-md px-1 text-center font-semibold text-white ${
+            isHovered ? `` : `hidden`
+          }`}
+        >
+          Test
+        </div>
       </div>
       <div className="mr-auto flex items-center gap-2">
         <Image

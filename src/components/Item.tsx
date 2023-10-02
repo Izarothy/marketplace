@@ -1,13 +1,15 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { useCategoryStore } from "~/utils/store";
+import { useCategoryStore } from "~/utils/stores/categoryStore";
+import { useItemStore } from "~/utils/stores/itemStore";
+import { type TItem } from "~/utils/types";
 
-type TProps = {
-  name: string;
-  categories: string[];
-};
-const Item = ({ name, categories }: TProps) => {
+type TProps = TItem;
+
+const Item = ({ id, name, categories, author, price }: TProps) => {
   const selectedCategory = useCategoryStore((state) => state.selectedCategory);
+  const setSelectedItem = useItemStore((state) => state.setSelectedItem);
+
   const [isHovered, setIsHovered] = useState(false);
   const [areCategoriesMatching, setAreCategoriesMatching] = useState(true);
 
@@ -25,6 +27,7 @@ const Item = ({ name, categories }: TProps) => {
       }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={() => setSelectedItem(id)}
     >
       <div className="relative flex aspect-square w-full justify-center">
         <Image
@@ -52,10 +55,10 @@ const Item = ({ name, categories }: TProps) => {
           height={32}
           className="rounded-full"
         />
-        <span>Author</span>
+        <span>{author}</span>
       </div>
       <div className="flex w-full items-center justify-between ">
-        <h5>$500</h5>
+        <h5>${price}</h5>
         <button className="rounded-md border border-black px-2 py-1 hover:bg-black hover:text-white">
           Buy now
         </button>

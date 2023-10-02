@@ -1,5 +1,5 @@
 import React from "react";
-import { useCategoryStore } from "~/utils/store";
+import { useCategoryStore } from "~/utils/stores/categoryStore";
 
 type TProps = {
   name: string;

@@ -9,19 +9,19 @@ type TProps = {
 const Item = ({ name, categories }: TProps) => {
   const selectedCategory = useCategoryStore((state) => state.selectedCategory);
   const [isHovered, setIsHovered] = useState(false);
-  const [categoriesMatching, setCategoriesMatching] = useState(true);
+  const [areCategoriesMatching, setAreCategoriesMatching] = useState(true);
 
   useEffect(() => {
     if (selectedCategory) {
-      setCategoriesMatching(categories.includes(selectedCategory));
+      setAreCategoriesMatching(categories.includes(selectedCategory));
       return;
     }
-    setCategoriesMatching(true);
+    setAreCategoriesMatching(true);
   }, [selectedCategory, categories]);
   return (
     <div
       className={`flex max-w-[250px] flex-col items-center gap-2 p-2 text-white hover:bg-white hover:text-black ${
-        categoriesMatching ? `` : `hidden`
+        areCategoriesMatching ? `` : `hidden`
       }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

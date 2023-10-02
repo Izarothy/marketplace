@@ -16,11 +16,11 @@ export default function Home() {
       <>
         <NavBar />
         <Header />
-        <main className="mb-12 flex min-h-screen  w-screen justify-between px-8 pt-12">
-          <aside className="min-h-full w-full p-2">
+        <main className="mb-12 flex min-h-screen  w-screen justify-between px-[10%] pt-12">
+          <aside className="min-h-full w-full">
             <ItemDetails />
           </aside>
-          <aside className="h-full w-full p-2">
+          <aside className="h-full w-full">
             <ItemCategories />
             <ItemGrid />
           </aside>

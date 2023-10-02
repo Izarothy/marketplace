@@ -35,9 +35,10 @@ const Item = ({ name, categories }: TProps) => {
           onMouseLeave={() => setIsHovered(false)}
         />
         <div
-          className={`bg-black/15 absolute bottom-4 rounded-md px-1 text-center font-semibold text-white ${
+          className={`bg-black/15 absolute bottom-4 z-10 rounded-md px-1 text-center font-semibold text-white ${
             isHovered ? `` : `hidden`
           }`}
+          onMouseEnter={() => setIsHovered(true)}
         >
           {name}
         </div>

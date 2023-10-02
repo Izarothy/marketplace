@@ -22,7 +22,7 @@ const Item = ({ id, name, categories, author, price }: TProps) => {
   }, [selectedCategory, categories]);
   return (
     <div
-      className={`flex max-w-[250px] flex-col items-center gap-2 p-2 text-white hover:bg-white hover:text-black ${
+      className={`flex max-w-[250px] cursor-pointer flex-col items-center gap-2 p-2 text-white hover:bg-white hover:text-black ${
         areCategoriesMatching ? `` : `hidden`
       }`}
       onMouseEnter={() => setIsHovered(true)}

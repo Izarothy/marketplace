@@ -4,11 +4,12 @@ import { useItemStore } from "~/utils/stores/itemStore";
 import ItemsData from "~/data/items.json";
 import EmailSVG from "./Icons/EmailSVG";
 import PhoneSVG from "./Icons/PhoneSVG";
+import { useSession } from "next-auth/react";
 
 const ItemDetails = () => {
   const selectedItemID = useItemStore((state) => state.selectedItem);
   const item = ItemsData.find((item) => item.id === selectedItemID);
-
+  const { data: session } = useSession();
   if (!item) return <></>;
   const { name, author, description } = item;
 
@@ -27,21 +28,27 @@ const ItemDetails = () => {
         <span className="block text-sm font-semibold text-gray-500">About</span>
         {description}
       </p>
-      <p className="mt-6 w-full max-w-md">
-        <span className="block text-sm font-semibold text-gray-500">
-          Contact
-        </span>
-        <div className="flex justify-between text-xs font-semibold">
-          <span className="inline-flex items-center gap-2">
-            <PhoneSVG />
-            123456789
+      {session ? (
+        <p className="mt-6 w-full max-w-md">
+          <span className="block text-sm font-semibold text-gray-500">
+            Contact
           </span>
-          <span className="inline-flex items-center">
-            <EmailSVG />
-            email@email.com
-          </span>
-        </div>
-      </p>
+          <div className="flex justify-between text-xs font-semibold">
+            <span className="inline-flex items-center gap-2">
+              <PhoneSVG />
+              123456789
+            </span>
+            <span className="inline-flex items-center">
+              <EmailSVG />
+              email@email.com
+            </span>
+          </div>
+        </p>
+      ) : (
+        <p className="mt-8 font-semibold text-red-500">
+          Log in to see contact info
+        </p>
+      )}
     </div>
   );
 };

@@ -59,9 +59,6 @@ const Item = ({ id, name, categories, author, price }: TProps) => {
       </div>
       <div className="flex w-full items-center justify-between ">
         <h5>${price}</h5>
-        <button className="rounded-md border border-black px-2 py-1 hover:bg-black hover:text-white">
-          Buy now
-        </button>
       </div>
     </div>
   );

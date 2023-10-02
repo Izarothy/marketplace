@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Header from "~/components/Header";
 import ItemCategories from "~/components/ItemCategories";
+import ItemDetails from "~/components/ItemDetails";
 import ItemGrid from "~/components/ItemGrid";
 import NavBar from "~/components/NavBar";
 
@@ -15,11 +16,14 @@ export default function Home() {
       <>
         <NavBar />
         <Header />
-        <main className="flex min-h-screen flex-col items-center px-[10%] pt-12">
-          <section className="w-full">
+        <main className="mb-12 flex min-h-screen  w-screen justify-between px-8 pt-12">
+          <aside className="min-h-full w-full p-2">
+            <ItemDetails />
+          </aside>
+          <aside className="h-full w-full p-2">
             <ItemCategories />
             <ItemGrid />
-          </section>
+          </aside>
         </main>
       </>
     </>

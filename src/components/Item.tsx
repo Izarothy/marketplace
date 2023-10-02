@@ -23,6 +23,8 @@ const Item = ({ name, categories }: TProps) => {
       className={`flex max-w-[250px] flex-col items-center gap-2 p-2 text-white hover:bg-white hover:text-black ${
         categoriesMatching ? `` : `hidden`
       }`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <div className="relative flex aspect-square w-full justify-center">
         <Image
@@ -30,15 +32,14 @@ const Item = ({ name, categories }: TProps) => {
           alt="Listed item"
           fill
           sizes="100vw"
-          className="h-auto w-full rounded-md object-cover"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+          className={`h-auto w-full rounded-md object-cover ${
+            isHovered && `opacity-90`
+          }`}
         />
         <div
           className={`bg-black/15 absolute bottom-4 z-10 rounded-md px-1 text-center font-semibold text-white ${
             isHovered ? `` : `hidden`
           }`}
-          onMouseEnter={() => setIsHovered(true)}
         >
           {name}
         </div>

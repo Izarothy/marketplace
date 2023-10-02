@@ -2,6 +2,9 @@ import Image from "next/image";
 import React from "react";
 import { useItemStore } from "~/utils/stores/itemStore";
 import ItemsData from "~/data/items.json";
+import EmailSVG from "./Icons/EmailSVG";
+import PhoneSVG from "./Icons/PhoneSVG";
+
 const ItemDetails = () => {
   const selectedItemID = useItemStore((state) => state.selectedItem);
   const item = ItemsData.find((item) => item.id === selectedItemID);
@@ -23,6 +26,21 @@ const ItemDetails = () => {
       <p className="mt-16 max-w-md">
         <span className="block text-sm font-semibold text-gray-500">About</span>
         {description}
+      </p>
+      <p className="mt-6 w-full max-w-md">
+        <span className="block text-sm font-semibold text-gray-500">
+          Contact
+        </span>
+        <div className="flex justify-between text-xs font-semibold">
+          <span className="inline-flex items-center gap-2">
+            <PhoneSVG />
+            123456789
+          </span>
+          <span className="inline-flex items-center">
+            <EmailSVG />
+            email@email.com
+          </span>
+        </div>
       </p>
     </div>
   );

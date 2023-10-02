@@ -55,7 +55,7 @@ const Item = ({ id, name, categories, author, price }: TProps) => {
           height={32}
           className="rounded-full"
         />
-        <span>{author}</span>
+        <span className="text-sm">{author}</span>
       </div>
       <div className="flex w-full items-center justify-between ">
         <h5>${price}</h5>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import landing from "../../public/landing.jpg";
+import handleGridScroll from "~/utils/handleGridScroll";
 
 const Header = () => {
   return (
@@ -14,7 +15,10 @@ const Header = () => {
         className="object-cover"
       />
       <span className="absolute bottom-0 mb-8 flex w-full justify-center gap-8">
-        <button className="text-gray-00 rounded-sm bg-white px-6 py-1 font-semibold">
+        <button
+          className="text-gray-00 rounded-sm bg-white px-6 py-1 font-semibold"
+          onClick={handleGridScroll}
+        >
           View offers
         </button>
         <button className="rounded-sm bg-white px-6 py-1 font-semibold text-gray-800">

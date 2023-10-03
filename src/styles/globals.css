@@ -6,8 +6,9 @@
   body {
     @apply overflow-x-hidden bg-black;
   }
-  input {
-    @apply w-min rounded-sm bg-gray-300;
+  input,
+  select {
+    @apply w-min rounded-sm border border-gray-800 bg-gray-200 pl-1;
   }
   label {
     @apply my-2 flex flex-col;

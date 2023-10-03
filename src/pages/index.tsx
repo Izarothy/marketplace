@@ -1,8 +1,8 @@
-import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Header from "~/components/Header";
 import ItemCategories from "~/components/ItemCategories";
 import ItemDetails from "~/components/ItemDetails";
+import ItemForm from "~/components/ItemForm";
 import ItemGrid from "~/components/ItemGrid";
 import NavBar from "~/components/NavBar";
 
@@ -15,6 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <>
+        <ItemForm />
         <NavBar />
         <Header />
         <main className="mb-12 flex min-h-screen  w-screen justify-between px-[10%] pt-12">

@@ -1,3 +1,4 @@
+import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Header from "~/components/Header";
 import ItemCategories from "~/components/ItemCategories";

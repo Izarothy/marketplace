@@ -4,6 +4,7 @@ import { useItemStore } from "~/utils/stores/itemStore";
 import EmailSVG from "./Icons/EmailSVG";
 import PhoneSVG from "./Icons/PhoneSVG";
 import { useSession } from "next-auth/react";
+import getFirstName from "~/utils/getFirstName";
 
 const ItemDetails = () => {
   const selectedItemID = useItemStore((state) => state.selectedItemID);
@@ -23,8 +24,10 @@ const ItemDetails = () => {
         height={96}
         className="absolute -top-11 left-5 rounded-full"
       />
-      <h2 className="text-4xl font-semibold">{name}</h2>
-      <span>@{author}</span>
+      <div className="flex justify-between">
+        <h2 className="text-4xl font-semibold">{name}</h2>
+      </div>
+      <span>@{getFirstName(author)}</span>
       <p className="mt-16 max-w-md">
         <span className="block text-sm font-semibold text-gray-500">About</span>
         {description}

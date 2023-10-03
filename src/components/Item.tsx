@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import getFirstName from "~/utils/getFirstName";
 import { useCategoryStore } from "~/utils/stores/categoryStore";
 import { useItemStore } from "~/utils/stores/itemStore";
 import { type TItem } from "~/utils/types";
@@ -58,7 +59,7 @@ const Item = ({ id, name, category, author, price }: TProps) => {
           height={32}
           className="rounded-full"
         />
-        <span className="text-sm">{author}</span>
+        <span className="text-sm">{getFirstName(author)}</span>
       </div>
       <div className="flex w-full items-center justify-between ">
         <h5>${price}</h5>

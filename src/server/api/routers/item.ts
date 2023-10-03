@@ -28,10 +28,9 @@ export const itemRouter = createTRPCRouter({
           price: input.price,
           description: input.description,
           category: input.category,
-          author: ctx?.session?.user?.name?.split(" ")[0] ?? "Anonymous",
+          author: ctx?.session?.user?.name,
         },
       });
-      console.log(item);
       return item;
     }),
   fetchItems: publicProcedure.query(async () => {

@@ -6,6 +6,7 @@ import PhoneSVG from "./Icons/PhoneSVG";
 import { useSession } from "next-auth/react";
 import getFirstName from "~/utils/getFirstName";
 import { api } from "~/utils/api";
+import { useRouter } from "next/router";
 
 const ItemDetails = () => {
   const selectedItemID = useItemStore((state) => state.selectedItemID);
@@ -14,12 +15,15 @@ const ItemDetails = () => {
 
   const { mutate: itemMutate } = api.item.deleteItem.useMutation();
 
+  const { data: session } = useSession();
+  const router = useRouter();
+
   const handleDelete = () => {
     if (!selectedItemID) return;
     itemMutate({ id: selectedItemID });
+    router.reload();
   };
 
-  const { data: session } = useSession();
   if (!item) return <></>;
   const { name, author, description } = item;
 

@@ -2,6 +2,7 @@ import React from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { api } from "~/utils/api";
 import { useItemFormStore } from "~/utils/stores/itemFormStore";
+import { useRouter } from "next/router";
 
 type FormValues = {
   name: string;
@@ -11,6 +12,7 @@ type FormValues = {
 };
 
 const ItemForm = () => {
+  const router = useRouter();
   const setIsItemFormShown = useItemFormStore(
     (state) => state.setIsItemFormShown,
   );
@@ -24,6 +26,7 @@ const ItemForm = () => {
     reset();
     setIsItemFormShown(false);
     itemMutate({ ...values, price });
+    router.reload();
   };
 
   return (

@@ -40,11 +40,11 @@ const Item = ({ id, name, category, author, price }: TProps) => {
           fill
           sizes="100vw"
           className={`h-auto w-full rounded-md object-cover ${
-            isHovered && `opacity-90`
+            isHovered && `opacity-50`
           }`}
         />
         <div
-          className={`bg-black/15 absolute bottom-4 z-10 rounded-md px-1 text-center font-semibold text-white ${
+          className={`absolute bottom-4 z-10 rounded-md bg-black/40 px-2 text-center font-semibold text-white ${
             isHovered ? `` : `hidden`
           }`}
         >

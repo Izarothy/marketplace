@@ -4,7 +4,6 @@ import { useItemStore } from "~/utils/stores/itemStore";
 
 const ItemGrid = () => {
   const allItems = useItemStore((state) => state.allItems);
-  console.log(allItems);
   return (
     <div
       className="m-auto grid min-h-full max-w-7xl  grid-cols-2 justify-center gap-2 lg:grid-cols-4"

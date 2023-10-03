@@ -11,7 +11,6 @@ const ItemDetails = () => {
   const item = allItems?.find((item) => item.id === selectedItemID);
 
   const { data: session } = useSession();
-  console.log(selectedItemID);
   if (!item) return <></>;
   const { name, author, description } = item;
 

@@ -9,6 +9,7 @@ type TProps = TItem;
 const Item = ({ id, name, category, author, price }: TProps) => {
   const selectedCategory = useCategoryStore((state) => state.selectedCategory);
   const setSelectedItem = useItemStore((state) => state.setSelectedItemID);
+  const selectedItemID = useItemStore((state) => state.selectedItemID);
 
   const [isHovered, setIsHovered] = useState(false);
   const [areCategoriesMatching, setAreCategoriesMatching] = useState(true);
@@ -22,9 +23,9 @@ const Item = ({ id, name, category, author, price }: TProps) => {
   }, [selectedCategory, category]);
   return (
     <div
-      className={`flex max-w-[250px] cursor-pointer flex-col items-center gap-2 p-2 text-white hover:bg-white hover:text-black ${
+      className={`flex max-w-[250px] cursor-pointer flex-col items-center gap-2 p-2  hover:bg-white hover:text-black ${
         areCategoriesMatching ? `` : `hidden`
-      }`}
+      } ${selectedItemID === id ? `bg-white text-black` : `text-white`}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => {

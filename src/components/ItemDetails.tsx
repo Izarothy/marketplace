@@ -5,11 +5,19 @@ import EmailSVG from "./Icons/EmailSVG";
 import PhoneSVG from "./Icons/PhoneSVG";
 import { useSession } from "next-auth/react";
 import getFirstName from "~/utils/getFirstName";
+import { api } from "~/utils/api";
 
 const ItemDetails = () => {
   const selectedItemID = useItemStore((state) => state.selectedItemID);
   const allItems = useItemStore((state) => state.allItems);
   const item = allItems?.find((item) => item.id === selectedItemID);
+
+  const { mutate: itemMutate } = api.item.deleteItem.useMutation();
+
+  const handleDelete = () => {
+    if (!selectedItemID) return;
+    itemMutate({ id: selectedItemID });
+  };
 
   const { data: session } = useSession();
   if (!item) return <></>;
@@ -26,6 +34,14 @@ const ItemDetails = () => {
       />
       <div className="flex justify-between">
         <h2 className="text-4xl font-semibold">{name}</h2>
+        {session?.user.name === author && (
+          <p
+            className="cursor-pointer text-sm font-semibold text-red-500"
+            onClick={handleDelete}
+          >
+            Delete this post
+          </p>
+        )}
       </div>
       <span>@{getFirstName(author)}</span>
       <p className="mt-16 max-w-md">

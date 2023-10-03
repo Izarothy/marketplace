@@ -39,4 +39,20 @@ export const itemRouter = createTRPCRouter({
       return allItems;
     }
   }),
+  deleteItem: publicProcedure
+    .input(z.object({ id: z.string() }))
+    .mutation(async ({ input }) => {
+      const deletedItem = await db.item.delete({
+        where: {
+          id: input.id,
+        },
+      });
+
+      if (!deletedItem) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Internal server error occured",
+        });
+      }
+    }),
 });

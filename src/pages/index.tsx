@@ -5,6 +5,7 @@ import ItemCategories from "~/components/ItemCategories";
 import ItemDetails from "~/components/ItemDetails";
 import ItemForm from "~/components/ItemForm";
 import ItemGrid from "~/components/ItemGrid";
+import ItemSearch from "~/components/ItemSearch";
 import NavBar from "~/components/NavBar";
 import { api } from "~/utils/api";
 import { useItemStore } from "~/utils/stores/itemStore";
@@ -34,6 +35,7 @@ export default function Home() {
           </aside>
           <aside className="h-full w-full">
             <ItemCategories />
+            <ItemSearch />
             <ItemGrid />
           </aside>
         </main>

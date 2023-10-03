@@ -6,6 +6,8 @@ type itemStore = {
   setSelectedItemID: (itemID: string | null) => void;
   allItems: TItem[] | null;
   setAllItems: (items: TItem[] | null) => void;
+  searchedItem: string;
+  setSearchedItem: (input: string) => void;
 };
 
 const useItemStore = create<itemStore>((set) => ({
@@ -20,6 +22,20 @@ const useItemStore = create<itemStore>((set) => ({
 
       return {
         selectedItemID: clickedItemID,
+      };
+    });
+  },
+
+  searchedItem: "",
+  setSearchedItem: (input) => {
+    set((state) => {
+      if (state.searchedItem === input) {
+        return {
+          searchedItem: state.searchedItem,
+        };
+      }
+      return {
+        searchedItem: input,
       };
     });
   },

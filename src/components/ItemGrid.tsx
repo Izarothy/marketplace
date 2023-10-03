@@ -1,15 +1,17 @@
 import React from "react";
 import Item from "./Item";
-import ItemsData from "~/data/items.json";
+import { useItemStore } from "~/utils/stores/itemStore";
 
 const ItemGrid = () => {
+  const allItems = useItemStore((state) => state.allItems);
+  console.log(allItems);
   return (
     <div
       className="m-auto grid min-h-full max-w-7xl  grid-cols-2 justify-center gap-2 lg:grid-cols-4"
       id="itemGrid"
     >
-      {ItemsData?.map((itemData) => {
-        return <Item {...itemData} key={itemData.id}></Item>;
+      {allItems?.map((itemData) => {
+        return <Item {...itemData} id={itemData.id} key={itemData.id}></Item>;
       })}
     </div>
   );

@@ -1,11 +1,13 @@
 import React from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
+import { api } from "~/utils/api";
 import { useItemFormStore } from "~/utils/stores/itemFormStore";
 
 type FormValues = {
   name: string;
   description: string;
   price: number;
+  category: string;
 };
 
 const ItemForm = () => {
@@ -14,12 +16,14 @@ const ItemForm = () => {
   );
   const isItemFormShown = useItemFormStore((state) => state.isItemFormShown);
 
-  const { handleSubmit, register, reset } = useForm<FormValues>();
+  const { mutate: itemMutate } = api.item.addItem.useMutation();
 
+  const { handleSubmit, register, reset } = useForm<FormValues>();
   const onSubmit: SubmitHandler<FormValues> = (values) => {
+    const price = Number(values.price);
     reset();
     setIsItemFormShown(false);
-    // trpc call, add to db
+    itemMutate({ ...values, price });
   };
 
   return (
@@ -60,6 +64,10 @@ const ItemForm = () => {
         <label>
           Description
           <input type="text" {...register("description")} required />
+        </label>
+        <label>
+          Category
+          <input type="text" {...register("category")} required />
         </label>
         <button
           type="submit"

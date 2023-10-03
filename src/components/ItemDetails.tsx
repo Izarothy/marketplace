@@ -1,20 +1,22 @@
 import Image from "next/image";
 import React from "react";
 import { useItemStore } from "~/utils/stores/itemStore";
-import ItemsData from "~/data/items.json";
 import EmailSVG from "./Icons/EmailSVG";
 import PhoneSVG from "./Icons/PhoneSVG";
 import { useSession } from "next-auth/react";
 
 const ItemDetails = () => {
-  const selectedItemID = useItemStore((state) => state.selectedItem);
-  const item = ItemsData.find((item) => item.id === selectedItemID);
+  const selectedItemID = useItemStore((state) => state.selectedItemID);
+  const allItems = useItemStore((state) => state.allItems);
+  const item = allItems?.find((item) => item.id === selectedItemID);
+
   const { data: session } = useSession();
+  console.log(selectedItemID);
   if (!item) return <></>;
   const { name, author, description } = item;
 
   return (
-    <div className="relative flex  min-h-full w-full flex-col bg-white p-7 pt-16">
+    <div className="relative flex min-h-full w-full flex-col bg-white p-7 pt-16">
       <Image
         src={"https://picsum.photos/96/96"}
         alt="item"

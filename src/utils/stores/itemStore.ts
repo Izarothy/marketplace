@@ -1,22 +1,34 @@
 import { create } from "zustand";
+import { type TItem } from "../types";
 
 type itemStore = {
-  selectedItem: number | null;
-  setSelectedItem: (itemID: number | null) => void;
+  selectedItemID: string | null;
+  setSelectedItemID: (itemID: string | null) => void;
+  allItems: TItem[] | null;
+  setAllItems: (items: TItem[] | null) => void;
 };
 
 const useItemStore = create<itemStore>((set) => ({
-  selectedItem: null,
-  setSelectedItem: (clickedItem) => {
+  selectedItemID: null,
+  setSelectedItemID: (clickedItemID) => {
     set((state) => {
-      if (state.selectedItem === clickedItem) {
+      if (state.selectedItemID === clickedItemID) {
         return {
-          selectedItem: state.selectedItem,
+          selectedItemID: state.selectedItemID,
         };
       }
 
       return {
-        selectedItem: clickedItem,
+        selectedItemID: clickedItemID,
+      };
+    });
+  },
+
+  allItems: null,
+  setAllItems: (items) => {
+    set(() => {
+      return {
+        allItems: items,
       };
     });
   },

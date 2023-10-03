@@ -1,8 +1,8 @@
 export type TItem = {
-  id: number;
+  id: string;
   name: string;
   price: number;
   author: string;
-  categories: string[];
+  category: string;
   description: string;
 };

@@ -1,12 +1,22 @@
 import Head from "next/head";
+import { useEffect } from "react";
 import Header from "~/components/Header";
 import ItemCategories from "~/components/ItemCategories";
 import ItemDetails from "~/components/ItemDetails";
 import ItemForm from "~/components/ItemForm";
 import ItemGrid from "~/components/ItemGrid";
 import NavBar from "~/components/NavBar";
+import { api } from "~/utils/api";
+import { useItemStore } from "~/utils/stores/itemStore";
 
 export default function Home() {
+  const fetchedItems = api.item.fetchItems.useQuery().data;
+  const setAllItems = useItemStore((state) => state.setAllItems);
+
+  useEffect(() => {
+    if (fetchedItems) setAllItems(fetchedItems);
+  }, [fetchedItems, setAllItems]);
+
   return (
     <>
       <Head>

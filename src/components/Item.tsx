@@ -6,20 +6,20 @@ import { type TItem } from "~/utils/types";
 
 type TProps = TItem;
 
-const Item = ({ id, name, categories, author, price }: TProps) => {
+const Item = ({ id, name, category, author, price }: TProps) => {
   const selectedCategory = useCategoryStore((state) => state.selectedCategory);
-  const setSelectedItem = useItemStore((state) => state.setSelectedItem);
+  const setSelectedItem = useItemStore((state) => state.setSelectedItemID);
 
   const [isHovered, setIsHovered] = useState(false);
   const [areCategoriesMatching, setAreCategoriesMatching] = useState(true);
 
   useEffect(() => {
     if (selectedCategory) {
-      setAreCategoriesMatching(categories.includes(selectedCategory));
+      setAreCategoriesMatching(category === selectedCategory);
       return;
     }
     setAreCategoriesMatching(true);
-  }, [selectedCategory, categories]);
+  }, [selectedCategory, category]);
   return (
     <div
       className={`flex max-w-[250px] cursor-pointer flex-col items-center gap-2 p-2 text-white hover:bg-white hover:text-black ${
@@ -27,7 +27,9 @@ const Item = ({ id, name, categories, author, price }: TProps) => {
       }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={() => setSelectedItem(id)}
+      onClick={() => {
+        setSelectedItem(id);
+      }}
     >
       <div className="relative flex aspect-square w-full justify-center">
         <Image

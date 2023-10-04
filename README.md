@@ -7,7 +7,7 @@ This is essentially just a simple marketplace website's blueprint.
 1. Clone this repository
 2. Download dependencies (`yarn` / `npm install` / `pnpm install`)
 3. Setup your .env file (similar to `.env.example`)
-4. Run yarn dev, your project should be available on `localhost:3000`
+4. Run `yarn` / `npm` / `pnpm` dev, your project should be available on `localhost:3000`
 
 ## Features
 

@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply overflow-x-hidden bg-black;
+    @apply min-h-screen overflow-x-hidden bg-black;
   }
   input,
   select {

@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useEffect } from "react";
+import Footer from "~/components/Footer";
 import Header from "~/components/Header";
 import ItemCategories from "~/components/ItemCategories";
 import ItemDetails from "~/components/ItemDetails";
@@ -32,17 +33,20 @@ export default function Home() {
         <ItemForm />
         <NavBar />
         <Header />
-        <main className="mb-12 flex min-h-[80vh]  w-screen justify-between gap-6 px-[10%] pt-12">
+        <main className="mb-12 flex min-h-screen  w-screen justify-between gap-6 px-[10%] pt-12">
           <aside className="min-h-full w-full">
             <ItemDetails />
           </aside>
-          <aside className="min-h-full w-full">
-            <ItemCategories />
-            <ItemSearch />
-            <ItemGrid />
+          <aside className="flex h-max min-h-screen w-full flex-col justify-between">
+            <section>
+              <ItemCategories />
+              <ItemSearch />
+              <ItemGrid />
+            </section>
             <Pagination />
           </aside>
         </main>
+        <Footer />
       </>
     </>
   );

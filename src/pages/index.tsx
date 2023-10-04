@@ -33,7 +33,7 @@ export default function Home() {
         <ItemForm />
         <NavBar />
         <Header />
-        <main className="mb-12 flex min-h-screen  w-screen justify-between gap-6 px-[10%] pt-12">
+        <main className="mb-32 flex min-h-screen  w-screen justify-between gap-6 px-[10%] pt-12">
           <aside className="min-h-full w-full">
             <ItemDetails />
           </aside>

@@ -8,6 +8,8 @@ const useFilterItems = () => {
   const searchedItem = useItemStore((state) => state.searchedItem);
   const selectedCategory = useCategoryStore((state) => state.selectedCategory);
 
+  const currentItemPage = useItemStore((state) => state.currentItemPage);
+
   useEffect(() => {
     const itemsAfterCategorySelection = allItems?.filter((item) =>
       selectedCategory ? item.category === selectedCategory : true,
@@ -18,7 +20,13 @@ const useFilterItems = () => {
     );
 
     setFilteredItems(itemsAfterSearch ?? null);
-  }, [searchedItem, selectedCategory, allItems, setFilteredItems]);
+  }, [
+    searchedItem,
+    selectedCategory,
+    allItems,
+    setFilteredItems,
+    currentItemPage,
+  ]);
 };
 
 export default useFilterItems;

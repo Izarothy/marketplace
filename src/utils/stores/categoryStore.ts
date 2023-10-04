@@ -22,3 +22,8 @@ const useCategoryStore = create<categoryStore>((set, get) => ({
 }));
 
 export { useCategoryStore };
+
+// limit 8
+// init page 1
+// filter items based on page
+// dynamically display math.ceil allitems.length / 8 pages

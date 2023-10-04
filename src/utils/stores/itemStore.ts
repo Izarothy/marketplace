@@ -10,6 +10,8 @@ type itemStore = {
   setSearchedItem: (input: string) => void;
   filteredItems: TItem[] | null;
   setFilteredItems: (items: TItem[] | null) => void;
+  currentItemPage: number;
+  setCurrentItemPage: (nextPage: number) => void;
 };
 
 const useItemStore = create<itemStore>((set) => ({
@@ -56,6 +58,15 @@ const useItemStore = create<itemStore>((set) => ({
     set(() => {
       return {
         filteredItems: items,
+      };
+    });
+  },
+
+  currentItemPage: 1,
+  setCurrentItemPage: (nextPage) => {
+    set(() => {
+      return {
+        currentItemPage: nextPage,
       };
     });
   },

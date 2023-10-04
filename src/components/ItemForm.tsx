@@ -42,7 +42,7 @@ const ItemForm = () => {
       }}
     >
       <form
-        className="bg-dark-gray flex h-1/2 w-1/2 flex-col p-4 font-semibold text-gray-300"
+        className="flex h-1/2 w-1/2 flex-col bg-dark-gray p-4 font-semibold text-gray-300"
         // eslint-disable-next-line @typescript-eslint/no-misused-promises
         onSubmit={handleSubmit(onSubmit)}
       >
@@ -64,13 +64,12 @@ const ItemForm = () => {
             required
           />
         </label>
-        <label className="flex h-full flex-col">
+        <label className="flex h-full w-full flex-col">
           Description
-          <input
-            type="text"
+          <textarea
             {...register("description")}
             required
-            className="h-full"
+            className="mb-auto h-full w-full max-w-[50%] text-start text-gray-800"
           />
         </label>
         <label>

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import landing from "../../public/landing.jpg";
-import handleGridScroll from "~/utils/handleGridScroll";
+import handleElementScroll from "~/utils/handleElementScroll";
 import { useItemFormStore } from "~/utils/stores/itemFormStore";
 
 const Header = () => {
@@ -21,7 +21,7 @@ const Header = () => {
       <span className="absolute bottom-0 mb-8 flex w-full justify-center gap-8">
         <button
           className="text-gray-00 rounded-sm bg-white px-6 py-1 font-semibold"
-          onClick={handleGridScroll}
+          onClick={() => handleElementScroll("itemGrid")}
         >
           View offers
         </button>

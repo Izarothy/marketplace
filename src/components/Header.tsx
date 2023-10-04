@@ -3,11 +3,13 @@ import React from "react";
 import landing from "../../public/landing.jpg";
 import handleElementScroll from "~/utils/handleElementScroll";
 import { useItemFormStore } from "~/utils/stores/itemFormStore";
+import { useSession } from "next-auth/react";
 
 const Header = () => {
   const setIsItemFormShown = useItemFormStore(
     (state) => state.setIsItemFormShown,
   );
+  const { data: sessionData } = useSession();
   return (
     <header
       className="relative mx-auto h-[70vh] w-screen md:h-[80vh] lg:w-[80%]"
@@ -30,7 +32,9 @@ const Header = () => {
         </button>
         <button
           className="rounded-sm bg-white px-6 py-1 font-semibold text-gray-800"
-          onClick={() => setIsItemFormShown(true)}
+          onClick={() => {
+            if (sessionData?.user) setIsItemFormShown(true);
+          }}
         >
           Add an item
         </button>

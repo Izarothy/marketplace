@@ -1,4 +1,5 @@
 import React from "react";
+import handleElementScroll from "~/utils/handleElementScroll";
 import { useItemStore } from "~/utils/stores/itemStore";
 
 const Pagination = () => {
@@ -21,7 +22,10 @@ const Pagination = () => {
                 currentItemPage - 1 === idx && `border border-gray-600`
               }`}
               key={`btn-${idx}`}
-              onClick={() => setCurrentItemPage(idx + 1)}
+              onClick={() => {
+                setCurrentItemPage(idx + 1);
+                handleElementScroll("header");
+              }}
             >
               {idx + 1}
             </button>

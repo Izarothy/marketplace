@@ -9,7 +9,10 @@ const Header = () => {
     (state) => state.setIsItemFormShown,
   );
   return (
-    <header className="relative mx-auto h-[70vh] w-screen md:h-[80vh] lg:w-[80%]">
+    <header
+      className="relative mx-auto h-[70vh] w-screen md:h-[80vh] lg:w-[80%]"
+      id="header"
+    >
       <Image
         src={landing}
         alt="Landscape"

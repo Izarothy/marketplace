@@ -7,13 +7,16 @@ import ItemForm from "~/components/ItemForm";
 import ItemGrid from "~/components/ItemGrid";
 import ItemSearch from "~/components/ItemSearch";
 import NavBar from "~/components/NavBar";
+import Pagination from "~/components/Pagination";
 import { api } from "~/utils/api";
+import useFilterItems from "~/utils/hooks/useFilterItems";
 import { useItemStore } from "~/utils/stores/itemStore";
 
 export default function Home() {
   const fetchedItems = api.item.fetchItems.useQuery().data;
   const setAllItems = useItemStore((state) => state.setAllItems);
 
+  useFilterItems();
   useEffect(() => {
     if (fetchedItems) setAllItems(fetchedItems);
   }, [fetchedItems, setAllItems]);
@@ -33,10 +36,11 @@ export default function Home() {
           <aside className="min-h-full w-full">
             <ItemDetails />
           </aside>
-          <aside className="h-full w-full">
+          <aside className="min-h-full w-full">
             <ItemCategories />
             <ItemSearch />
             <ItemGrid />
+            <Pagination />
           </aside>
         </main>
       </>

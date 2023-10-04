@@ -8,6 +8,8 @@ type itemStore = {
   setAllItems: (items: TItem[] | null) => void;
   searchedItem: string;
   setSearchedItem: (input: string) => void;
+  filteredItems: TItem[] | null;
+  setFilteredItems: (items: TItem[] | null) => void;
 };
 
 const useItemStore = create<itemStore>((set) => ({
@@ -45,6 +47,15 @@ const useItemStore = create<itemStore>((set) => ({
     set(() => {
       return {
         allItems: items,
+      };
+    });
+  },
+
+  filteredItems: null,
+  setFilteredItems: (items) => {
+    set(() => {
+      return {
+        filteredItems: items,
       };
     });
   },

@@ -1,32 +1,22 @@
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import getFirstName from "~/utils/getFirstName";
-import { useCategoryStore } from "~/utils/stores/categoryStore";
 import { useItemStore } from "~/utils/stores/itemStore";
 import { type TItem } from "~/utils/types";
 
 type TProps = TItem;
 
 const Item = ({ id, name, category, author, price }: TProps) => {
-  const selectedCategory = useCategoryStore((state) => state.selectedCategory);
   const setSelectedItem = useItemStore((state) => state.setSelectedItemID);
   const selectedItemID = useItemStore((state) => state.selectedItemID);
 
   const [isHovered, setIsHovered] = useState(false);
-  const [areCategoriesMatching, setAreCategoriesMatching] = useState(true);
 
-  useEffect(() => {
-    if (selectedCategory) {
-      setAreCategoriesMatching(category === selectedCategory);
-      return;
-    }
-    setAreCategoriesMatching(true);
-  }, [selectedCategory, category]);
   return (
     <div
-      className={`flex max-w-[250px] cursor-pointer flex-col items-center gap-2 p-2  hover:bg-white hover:text-black ${
-        areCategoriesMatching ? `` : `hidden`
-      } ${selectedItemID === id ? `bg-white text-black` : `text-white`}`}
+      className={`flex max-h-[250px] max-w-[250px] cursor-pointer flex-col items-center gap-2 p-2  hover:bg-white hover:text-black ${
+        selectedItemID === id ? `bg-white text-black` : `text-white`
+      }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => {

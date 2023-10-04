@@ -3,11 +3,7 @@ import Item from "./Item";
 import { useItemStore } from "~/utils/stores/itemStore";
 
 const ItemGrid = () => {
-  const allItems = useItemStore((state) => state.allItems);
-  const searchedItem = useItemStore((state) => state.searchedItem);
-  const filteredItems = allItems?.filter((item) =>
-    item.name.includes(searchedItem),
-  );
+  const filteredItems = useItemStore((state) => state.filteredItems);
 
   return (
     <div

@@ -42,7 +42,7 @@ const ItemForm = () => {
       }}
     >
       <form
-        className="flex h-1/2 w-1/2 flex-col bg-white p-4 font-semibold"
+        className="bg-dark-gray flex h-1/2 w-1/2 flex-col p-4 font-semibold text-gray-300"
         // eslint-disable-next-line @typescript-eslint/no-misused-promises
         onSubmit={handleSubmit(onSubmit)}
       >
@@ -64,13 +64,18 @@ const ItemForm = () => {
             required
           />
         </label>
-        <label>
+        <label className="flex h-full flex-col">
           Description
-          <input type="text" {...register("description")} required />
+          <input
+            type="text"
+            {...register("description")}
+            required
+            className="h-full"
+          />
         </label>
         <label>
           Category
-          <select {...register("category")} required>
+          <select {...register("category")} required className="text-gray-600">
             <option value="Test 1">Test 1</option>
             <option value="Test 2">Test 2</option>
             <option value="Test 3">Test 3</option>

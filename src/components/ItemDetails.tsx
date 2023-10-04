@@ -28,7 +28,7 @@ const ItemDetails = () => {
   const { name, author, description } = item;
 
   return (
-    <div className="relative flex min-h-full w-full flex-col bg-white p-7 pt-16">
+    <div className="bg-dark-gray relative flex min-h-full w-full flex-col p-7 pt-16 text-gray-300">
       <Image
         src={"https://picsum.photos/96/96"}
         alt="item"
